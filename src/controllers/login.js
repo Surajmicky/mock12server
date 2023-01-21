@@ -17,7 +17,7 @@ loginRouter.post('/login',async(req,res)=>{
             { id: registeredUser.id, email: registeredUser.email },
             'mock12'
           );
-        return  res.send({token:token})
+        return  res.send({token:token,email:registeredUser.email,username:registeredUser.name})
     }else {
         res.send({message:"something went wrong"})
     }
