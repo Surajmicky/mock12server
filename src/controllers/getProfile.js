@@ -2,8 +2,9 @@ const User = require('../models/user.model');
 const express = require('express');
 const getProfile= express.Router()
 
-getProfile.get('/getProfile',async(req,res)=>{
-    const registeredUser = await User.findOne({ email: req.body.email });
+getProfile.get('/getProfile/:email',async(req,res)=>{
+  const email= req.params.email;
+    const registeredUser = await User.findOne({email:email});
     if (!registeredUser) {
       return res.json({message:'User not found'});
     }
